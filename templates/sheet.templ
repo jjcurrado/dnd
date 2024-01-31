@@ -1,0 +1,78 @@
+package templates
+
+import(
+	util "dnd/utilities"
+  "strconv"
+)
+templ Sheet(c util.Character) {
+        <div class="sheet" id="char-sheet">
+          <div class="sheet-header">
+            <div>Level {strconv.Itoa(c.Level)}</div>
+            <div class="header-row">
+            <div class="header-column"> <!--row-->
+              <div>
+                <div style="border-bottom: 1px solid darkgray;">{c.Name}</div>
+                <div style="font-size: small; margin-right: 5px">Name</div>
+              </div>
+              <div>
+                <div style="border-bottom: 1px solid darkgray;">{c.Class}/{ c.Subclass} </div>
+                <div style="font-size: small;">Class/Subclass</div>
+              </div>
+            </div>
+            <div class="header-column"> <!--row-->
+              <div>
+                <div style="border-bottom: 1px solid darkgray;">{c.Background}</div>
+                <div style="font-size: small; margin-right: 5px">Background</div>
+              </div>
+              <div class="header-item">
+                <div style="border-bottom: 1px solid darkgray;">{c.Race}</div>
+                <div style="font-size: small;">Race</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main">
+        <div class="stats">
+          <b>Strength</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">{strconv.Itoa(c.Strength)}</h2>
+            </div>
+          </div>
+          <b>Dexterity</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">{strconv.Itoa(c.Dexterity)}</h2>
+            </div>
+          </div>
+          <b>Constitution</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">{strconv.Itoa(c.Constitution)}</h2>
+            </div>
+          </div>
+          <b>Wisdom</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">{strconv.Itoa(c.Wisdom)}</h2>
+            </div>
+          </div>
+          <b>Intelligence</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px">{strconv.Itoa(c.Intelligence)}</h2>
+            </div>
+          </div>
+          <b>Charisma</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">{strconv.Itoa(c.Charisma)}</h2>
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+          AC {strconv.Itoa(c.AC)}
+      </div>
+      </div>
+}

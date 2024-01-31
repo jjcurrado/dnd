@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+<html>
+
+  <head>
+  <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <title>Dungeon Daddy</title>
+    <body>
+
+    <!--Navbar-->
+      <div>
+        <ul class="navbar">
+          <li><img style="width:25px; padding-right: 5px;" src="css/icon.bmp"></li>
+          <li style="flex-grow: 2;"><h2>Dungeon Daddy</h1></li>
+          <li style="flex-grow: 1;"><h3>view characters</h3></li>
+          <li style="flex-grow: 1;"><h3>upload notes</h3></li>
+        </ul>
+      </div>
+
+      <!--main body of the page-->
+      <div class="page">
+
+        <div class="sheet" id="char-sheet">
+          <div class="sheet-header">
+            <div>Level 4</div>
+            <div class="header-row">
+            <div class="header-column"> <!--row-->
+              <div>
+                <div style="border-bottom: 1px solid darkgray;">carl</div>
+                <div style="font-size: small; margin-right: 5px">Name</div>
+              </div>
+              <div>
+                <div style="border-bottom: 1px solid darkgray;">fighter/fuckboi</div>
+                <div style="font-size: small;">Class/Subclass</div>
+              </div>
+            </div>
+            <div class="header-column"> <!--row-->
+              <div>
+                <div style="border-bottom: 1px solid darkgray;">acolyte</div>
+                <div style="font-size: small; margin-right: 5px">Background</div>
+              </div>
+              <div class="header-item">
+                <div style="border-bottom: 1px solid darkgray;">caucasian</div>
+                <div style="font-size: small;">Race</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="main">
+        <div class="stats">
+          <b>Strength</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">4</h2>
+            </div>
+          </div>
+          <b>Dexterity</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">5</h2>
+            </div>
+          </div>
+          <b>Constitution</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">8</h2>
+            </div>
+          </div>
+          <b>Wisdom</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">0</h2>
+            </div>
+          </div>
+          <b>Intelligence</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px">10</h2>
+            </div>
+          </div>
+          <b>Charisma</b>
+          <div class="stat">
+            <div class="score">
+              <h2 style="padding: 10px;">20</h2>
+            </div>
+          </div>
+        </div>
+        <div>
+        </div>
+          AC 69
+      </div>
+      </div>
+
+        <!--prompt option form-->
+        <form class="prompt-form">
+            <textarea class="prompt-text" id="prompt" name="prompt" placeholder="Enter your character description here..."></textarea>
+            <div style="display: grid; gap: 30px;">
+              <span>
+                <input type="checkbox" id="appearance" name="appearance" value="true">
+                <label for="appearance">Appearance</label>
+              </span>
+              <span>
+                <input type="checkbox" id="feats" name="feats" value="true">
+                <label for="ability">Feats</label>
+              </span>
+              <span style="grid-column-start: 3;">
+                <input type="checkbox" id="spells" name="spells" value="true">
+                <label for="spells">Spells</label>
+              </span>
+            </div>
+              <input class="submit-btn" hx-indicator="#char-sheet" hx-post="/character" hx-target="#char-sheet" hx-swap="outerHTML" type="submit" value="Submit">
+        </form>
+
+
+      </div> <!--end main page-->
+
+    </body>
+
+</html>
