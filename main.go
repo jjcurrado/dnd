@@ -1,9 +1,7 @@
 package main
 
 import (
-	"database/sql"
 	"dnd/server"
-	"fmt"
 	"log"
 	"net/http"
 	"text/template"
@@ -28,28 +26,35 @@ import (
 //		- create images of characters based on their sheets
 //		- add rolling functionality for each sheet
 
-const (
-	host     = "localhost"
-	port     = "5432"
-	user     = "postgres"
-	password = "One-small-step-4-man"
-	dbname   = "dnd"
-)
-
 func main() {
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
-	db, err := sql.Open("postgres", psqlInfo)
 
-	if err != nil {
-		panic(err)
-	}
-	defer db.Close()
-	err = db.Ping()
+	//err := godotenv.Load(".env")
 
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println("Successfully connected!")
+	//if err != nil {
+	//log.Fatal("Error loading .env file")
+	//}
+
+	//host := os.Getenv("DB_HOST")
+	//port := os.Getenv("DB_PORT")
+	//user := os.Getenv("DB_USER")
+	//password := os.Getenv("DB_PASSWORD")
+	//dbname := os.Getenv("DB_NAME")
+
+	//psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+
+	//db, err := sql.Open("postgres", psqlInfo)
+
+	//if err != nil {
+	//panic(err)
+	//}
+	//defer db.Close()
+	//err = db.Ping()
+
+	//if err != nil {
+	//panic(err)
+	//}
+	//fmt.Println("Successfully connected!")
+
 	// host static files
 	// TODO: better directory structure?
 	fs := http.FileServer(http.Dir("static"))
