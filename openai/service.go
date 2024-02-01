@@ -11,8 +11,6 @@ import (
 	openai "github.com/sashabaranov/go-openai"
 )
 
-var client = util.CreateClient()
-
 //TODO:
 // - use the ai in a more generic sense (i.e. have a function check which function calls its lookking for)
 
@@ -154,7 +152,7 @@ func sendRequest(prompt string) openai.ChatCompletionResponse {
 
 	ctx := context.Background()
 
-	res, err := client.CreateChatCompletion(
+	res, err := util.AIClient.CreateChatCompletion(
 		ctx,
 		openai.ChatCompletionRequest{
 			Model:    openai.GPT4TurboPreview,
