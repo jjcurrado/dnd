@@ -2,6 +2,7 @@ package main
 
 import (
 	"dnd/server"
+	util "dnd/utilities"
 	"log"
 	"net/http"
 	"text/template"
@@ -24,4 +25,5 @@ func main() {
 
 	// start server
 	log.Fatal(http.ListenAndServe(":8000", nil))
+	util.DBClient.Close()
 }
