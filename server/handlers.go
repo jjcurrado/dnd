@@ -14,7 +14,6 @@ func CharacterPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(r.Form)
 	options := utilities.Options{
 		Feats:      r.Form.Get("feats") == "true",
 		Spells:     r.Form.Get("spells") == "true",
@@ -28,7 +27,6 @@ func CharacterPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Printf("Character prompt recieved: %s\n", prompt)
 	character := ai.CreateCharacter(prompt, options)
 
 	templates.Sheet(character).Render(r.Context(), w)

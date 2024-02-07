@@ -25,5 +25,6 @@ func main() {
 
 	// start server
 	log.Fatal(http.ListenAndServe(":8000", nil))
+
 	util.DBClient.Close()
 }
