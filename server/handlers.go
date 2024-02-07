@@ -9,8 +9,7 @@ import (
 )
 
 func CharacterPostHandler(w http.ResponseWriter, r *http.Request) {
-	err := r.ParseForm()
-	if err != nil {
+	if err := r.ParseForm(); err != nil {
 		w.Write([]byte(fmt.Sprintf("ERROR PARSING FORM: %v", err)))
 		return
 	}
