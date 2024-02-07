@@ -53,7 +53,7 @@ func RequestCharacterStats(prompt string) util.Character {
 func RequestSpellList(char util.Character) []string {
 
 	spells, cantrips := util.PreparedSpells(char)
-	prompt := fmt.Sprintf("Create a list of %v spells and %v cantrips for a level %v %v . Only include spells that can be cast.", spells, cantrips, char.Level, char.Class)
+	prompt := fmt.Sprintf("Create a list of %v spells and %v cantrips for a level %v %v . Only include spells that can be cast by a character of this level and class.", spells, cantrips, char.Level, char.Class)
 
 	res := sendRequest(prompt)
 	l := GetSpellListResponse(res)
