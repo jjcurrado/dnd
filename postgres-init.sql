@@ -9,5 +9,3 @@ CREATE TABLE spells (
     range VARCHAR(255) NOT NULL,
     components VARCHAR(255)
 );
-
-INSERT INTO spells (name, description, level, school, duration, casting_time, range, components) VALUES ('Acid Arrow', 'A shimmering green arrow streaks toward a target within range and bursts in a spray of acid.', 3, 'evocation', '5 minutes', '1 action', '20 feet', 'VSM');
