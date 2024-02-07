@@ -14,9 +14,25 @@ This is a slow moving project as it is something I do in my spare time.
 
 ## How?
 To run:
-1. create a .env file in the base directory with `API_KEY="your-openai-api-key-here"`
-2. use `go run main.go` in the base directory
-3. open `localhost:8000` in your browser
+
+Requirements:
+1. Go
+2. Docker
+
+Steps:
+1. create a .env file in the base directory with 
+```
+DB_HOST="localhost"
+DB_USER="postgres"
+DB_PASSWORD="your-db-password-here"
+DB_PORT="5432"
+DB_NAME="dnd"
+API_KEY="your-openai-api-key-here
+```
+2. run docker compose -f compose.yml up to start the postgres server
+3. use `go run main.go` in the base directory to start the application
+4. open `localhost:8000` in your browser to view the application
+
 
 
 ## A Long List of Future Features That May or May Not Get Done at Any Point 
