@@ -26,5 +26,4 @@ To run:
 - [ ] upload notes for data retrieval from AI
 - [ ] create multiple characters at the same time for encounters
 - [ ] use DALL-E to create a picture of a character based on their character sheet or other information.
-- [ ] incorporate subscription and actually make money?
 - [ ] create a map from description of cities with information like population, images, government, etc.
