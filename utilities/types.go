@@ -37,6 +37,8 @@ type Spell struct {
 	CastingTime string
 	Range       string
 	Description string
+	Components  string
+	School      string
 }
 
 type SpellResponse struct {

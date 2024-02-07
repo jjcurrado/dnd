@@ -113,7 +113,15 @@ func GetAllSpells(SpellNames []string) []util.Spell {
 		wg.Add(1)
 		go func(SpellName string, index int) {
 			defer wg.Done()
-			details[index] = RequestSpellDetails(SpellName)
+			spell, err := util.FindSpell(SpellName)
+
+			if err == nil && spell.Name != "" {
+				details[index] = spell
+			} else {
+				spell = RequestSpellDetails(SpellName)
+				util.InsertSpell(spell)
+				details[index] = spell
+			}
 		}(SpellNames[i], i)
 	}
 	wg.Wait()

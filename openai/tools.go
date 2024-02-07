@@ -163,8 +163,16 @@ var Functions = []openai.Tool{
 						Type:        jsonschema.String,
 						Description: "A description of the spell including the damage rolls and saving throws required at base level and upcast levels.",
 					},
+					"Components": {
+						Type:        jsonschema.String,
+						Description: "The components used for casting. V for verbal, S for somatic, and M for material",
+					},
+					"School": {
+						Type:        jsonschema.String,
+						Description: "The school of magic that the spell pertains to, like Evocation, Illusion, Conjuration, etc.",
+					},
 				},
-				Required: []string{"Name", "Level", "Range", "Duration", "CastingTime", "Description"},
+				Required: []string{"Name", "Components", "School", "Level", "Range", "Duration", "CastingTime", "Description"},
 			},
 		},
 	},

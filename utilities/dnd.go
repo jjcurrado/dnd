@@ -70,6 +70,8 @@ Level: %d
 Casting Time: %s
 Range: %s
 Duration: %s
+Components: %s
+School: %s
 
 %v
 -----------------------------------------------------------
@@ -79,6 +81,8 @@ Duration: %s
 		spell.CastingTime,
 		spell.Range,
 		spell.Duration,
+		spell.Components,
+		spell.School,
 		spell.Description,
 	)
 }
