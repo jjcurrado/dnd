@@ -30,7 +30,14 @@ func CreateCharacter(description string, options util.Options) util.Character {
 // Create the base character stats including: name, class, subclass, hp, ac, and ability scores
 func RequestCharacterStats(prompt string) util.Character {
 	res := sendRequest(prompt)
-	char := GetCharacterResponse(res)
+	char := util.Character{}
+	err := GetAIResponse(res, &char)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	util.PrintCharacter(char)
 	return char
 }
 
@@ -41,8 +48,14 @@ func RequestSpellList(char util.Character) []string {
 	prompt := fmt.Sprintf("Create a list of %v spells and %v cantrips for a level %v %v . Only include spells that can be cast by a character of this level and class.", spells, cantrips, char.Level, char.Class)
 
 	res := sendRequest(prompt)
-	l := GetSpellListResponse(res)
-	return l
+	l := util.SpellList{}
+	err := GetAIResponse(res, &l)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return l.Spells
 }
 
 // Given the name of a spell, get its details including: name, level, range, duration, and description
@@ -50,36 +63,20 @@ func RequestSpellDetails(spell string) util.Spell {
 
 	prompt := fmt.Sprintf("Give me the details for the spell %v", spell)
 	res := sendRequest(prompt)
-	s := GetSpellDetailsResponse(res)
+	s := util.Spell{}
+
+	err := GetAIResponse(res, &s)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return s
 }
 
-// Extract character data from the openai response
-func GetCharacterResponse(res openai.ChatCompletionResponse) util.Character {
+func GetAIResponse(res openai.ChatCompletionResponse, out any) error {
 	msg := res.Choices[0].Message
-	char := util.Character{}
-	json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &char)
-
-	return char
-}
-
-// Extract spell name list from the openai response
-func GetSpellListResponse(res openai.ChatCompletionResponse) []string {
-	msg := res.Choices[0].Message
-	spell := util.SpellList{}
-	json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &spell)
-
-	return spell.Spells
-}
-
-// Extract spell detail data from the openai response
-func GetSpellDetailsResponse(res openai.ChatCompletionResponse) util.Spell {
-	msg := res.Choices[0].Message
-	spell := util.Spell{}
-	json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &spell)
-
-	return spell
+	return json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &out)
 }
 
 // Loop through the list of spell names and request the details for each in parallel
