@@ -6,10 +6,12 @@ import (
 	"fmt"
 )
 
+/*
 type table interface {
 	find(string) (any, error)
 	insert(any) (int64, error)
 }
+*/
 
 type spellTable struct {
 	db *sql.DB

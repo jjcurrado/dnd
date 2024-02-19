@@ -37,6 +37,3 @@ func newDB() (*sql.DB, error) {
 	fmt.Println("Successfully connected!")
 	return db, nil
 }
-
-func (s *server) connectDB() {
-}
