@@ -34,7 +34,12 @@ API_KEY="your-openai-api-key-here
 4. open `localhost:8000` in your browser to view the application
 5. run docker compose -f compose.yml down to stop the postgres server
 
-
+Note: 
+There is currently no loading screen to know when the character creation is in progress.
+Having openAI generate spell text will be the most time/token expensive part of the process. 
+The solution I've implemented is storing this data in the SQL database so that is only generated once. 
+That being said if you make a spell caster and you have not already generated the information for the spells that it gives
+it will take quite a while, just be patient!
 
 ## A Long List of Future Features That May or May Not Get Done at Any Point 
 - [ ] login
