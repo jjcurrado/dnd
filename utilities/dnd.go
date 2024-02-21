@@ -178,7 +178,7 @@ func PrintCharacter(char Character) {
 	}
 	fmt.Printf(
 		`-----------------------------------------------------------
-		Name: %-40sLevel: %d 
+		Name: %-40sLevel: %d
 		Race: %-40sClass: %s
 		Subrace:%-40sBackground: %s
 
@@ -190,7 +190,7 @@ func PrintCharacter(char Character) {
 		CON : %d (%d)
 		INT : %d (%d)
 		WIS : %d (%d)
-		CHA : %d (%d) 
+		CHA : %d (%d)
 -----------------------------------------------------------\n`,
 		char.Name, char.Level,
 		char.Race, char.Class,
@@ -209,7 +209,7 @@ func PrintSpell(spell Spell) {
 	fmt.Printf(
 		`-----------------------------------------------------------
 %s
-		 
+
 Level: %d
 
 Casting Time: %s
@@ -219,8 +219,7 @@ Components: %s
 School: %s
 
 %v
------------------------------------------------------------
-		`,
+-----------------------------------------------------------`,
 		spell.Name,
 		spell.Level,
 		spell.CastingTime,
