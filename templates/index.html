@@ -8,13 +8,15 @@
 <title>Dungeon Daddy</title>
 
 <body>
-
     <!--Navbar-->
     <div>
         <ul class="navbar">
             <li><img style="width:25px; padding-right: 5px;" src="static/icon.bmp"></li>
             <li style="flex-grow: 2;">
                 <h2>Dungeon Daddy</h1>
+            </li>
+            <li hx-get="/" hx-target="main-page" hx-swap="innerHTML" style="flex-grow: 1;">
+                <h3>create characters</h3>
             </li>
             <li style="flex-grow: 1;">
                 <h3>view characters</h3>
@@ -26,8 +28,7 @@
     </div>
 
     <!--main body of the page-->
-    <div class="page">
-
+    <div class="page" id="main-page">
         <div class="sheet" id="char-sheet">
             <div class="sheet-header block">
                 <div>Level 4</div>
@@ -57,37 +58,37 @@
             <div class="main">
                 <div class="stats block">
                     <b>Strength</b>
-                    <div class="stat">
+                    <div>
                         <div class="score">
                             <h2 style="padding: 10px;">4</h2>
                         </div>
                     </div>
                     <b>Dexterity</b>
-                    <div class="stat">
+                    <div>
                         <div class="score">
                             <h2 style="padding: 10px;">5</h2>
                         </div>
                     </div>
                     <b>Constitution</b>
-                    <div class="stat">
+                    <div>
                         <div class="score">
                             <h2 style="padding: 10px;">8</h2>
                         </div>
                     </div>
                     <b>Wisdom</b>
-                    <div class="stat">
+                    <div>
                         <div class="score">
                             <h2 style="padding: 10px;">0</h2>
                         </div>
                     </div>
                     <b>Intelligence</b>
-                    <div class="stat">
+                    <div>
                         <div class="score">
                             <h2 style="padding: 10px">10</h2>
                         </div>
                     </div>
                     <b>Charisma</b>
-                    <div class="stat">
+                    <div>
                         <div class="score">
                             <h2 style="padding: 10px;">20</h2>
                         </div>
@@ -95,14 +96,20 @@
                 </div>
                 <div class="sheet-center">
                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                        <div class="block" style="width: 28%">AC 69</div>
-                        <div class="block" style="width: 28%">Initiative +5 </div>
-                        <div class="block" style="width: 28%"> Speed 35 </div>
+                        <div class="block" style="width: 28%">AC<br> 69</div>
+                        <div class="block" style="width: 28%">Initiative<br> +5 </div>
+                        <div class="block" style="width: 28%">Speed<br> 35 </div>
                     </div>
                 </div>
                 <div class="sheet-right">
-                    <p>stuff</p>
-                    <p>feats/traits</p>
+                    <button class="block"> View Personality Traits</button>
+                    <button class="block"> View Ideals</button>
+                    <button class="block"> View Bonds</button>
+                    <button class="block"> View Flaws</button>
+                    <div class="block">
+                        <button class="block" style="width:100%; margin-bottom: 4px;">Lucky</button>
+                        <button class="block" style="width:100%">Halfling Nimbleness</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,11 +3,19 @@ package app
 import (
 	"dnd/templates"
 	"dnd/utilities"
+	"fmt"
 	"net/http"
 	"text/template"
 
 	"github.com/labstack/echo/v4"
 )
+
+func (s *server) handleLogging(callback echo.HandlerFunc) echo.HandlerFunc {
+	return func(c echo.Context) error {
+		fmt.Printf("------------------\nHOST : %v\nMETHOD : %v\n----------------------\n", c.Request().URL, c.Request().Method)
+		return callback(c)
+	}
+}
 
 func (s *server) handleCharacterCreate() echo.HandlerFunc {
 

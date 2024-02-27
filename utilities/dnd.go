@@ -191,7 +191,7 @@ func PrintCharacter(char Character) {
 		INT : %d (%d)
 		WIS : %d (%d)
 		CHA : %d (%d)
------------------------------------------------------------\n`,
+-----------------------------------------------------------`,
 		char.Name, char.Level,
 		char.Race, char.Class,
 		subrace, char.Background,
@@ -204,6 +204,7 @@ func PrintCharacter(char Character) {
 		char.Wisdom, Modifier(char.Wisdom),
 		char.Charisma, Modifier(char.Charisma),
 	)
+	fmt.Println()
 }
 func PrintSpell(spell Spell) {
 	fmt.Printf(
