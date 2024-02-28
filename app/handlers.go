@@ -12,7 +12,7 @@ import (
 
 func (s *server) handleLogging(callback echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		fmt.Printf("------------------\nHOST : %v\nMETHOD : %v\n----------------------\n", c.Request().URL, c.Request().Method)
+		fmt.Printf("----------------------\nHOST : %v\nMETHOD : %v\n----------------------\n", c.Request().URL, c.Request().Method)
 		return callback(c)
 	}
 }
@@ -33,9 +33,29 @@ func (s *server) handleCharacterCreate() echo.HandlerFunc {
 }
 
 func (s *server) handleHomePage() echo.HandlerFunc {
-
 	return func(c echo.Context) error {
 		tmpl := template.Must(template.ParseFiles("templates/index.html"))
+		return tmpl.Execute(c.Response().Writer, nil)
+	}
+}
+
+func (s *server) handleWelcome() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		tmpl := template.Must(template.ParseFiles("templates/welcome.html"))
+		return tmpl.Execute(c.Response().Writer, nil)
+	}
+}
+
+func (s *server) handlePrompt() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		tmpl := template.Must(template.ParseFiles("templates/prompt.html"))
+		return tmpl.Execute(c.Response().Writer, nil)
+	}
+}
+
+func (s *server) handleSheetsView() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		tmpl := template.Must(template.ParseFiles("templates/charactersheet.html"))
 		return tmpl.Execute(c.Response().Writer, nil)
 	}
 }
