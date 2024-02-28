@@ -40,7 +40,13 @@
                 >
                     <h3>view characters</h3>
                 </li>
-                <li style="flex-grow: 1">
+                <li
+                    style="flex-grow: 1"
+                    hx-get="/notes"
+                    hx-target="#main-page"
+                    hx-swap="innerhtml"
+                    style="flex-grow: 1"
+                >
                     <h3>upload notes</h3>
                 </li>
             </ul>

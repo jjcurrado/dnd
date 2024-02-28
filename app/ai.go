@@ -59,11 +59,14 @@ func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
 	return res
 }
 
+// check the response from OpenAI to get the function call arguments
+// TODO: Handle empty choices, handle multiple choices (i.e. multiple character creations)
 func (ai *AIservice) getAIResponse(res openai.ChatCompletionResponse, out any) error {
 	msg := res.Choices[0].Message
 	return json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &out)
 }
 
+// check for errors or nil response
 func (ai *AIservice) checkAIResponse(res openai.ChatCompletionResponse, err error) {
 	if err != nil {
 		panic(err)

@@ -83,6 +83,15 @@ b {
     box-shadow: 2px 2px 2px lightgray;
     vertical-align: center;
 }
+
+.name-tile {
+    display: inline-block;
+    vertical-align: center;
+    text-align: center;
+    margin: 20px;
+    width: 25%;
+    height: 25%;
+}
 .proficiencies {
 }
 .sheet-center {
@@ -126,6 +135,7 @@ b {
 }
 .prompt-text {
     justify-content: center;
+    font-size: 1.5em;
     flex-grow: 2;
     width: 100%;
     border-radius: 15px;

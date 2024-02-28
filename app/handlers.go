@@ -55,6 +55,13 @@ func (s *server) handlePrompt() echo.HandlerFunc {
 
 func (s *server) handleSheetsView() echo.HandlerFunc {
 	return func(c echo.Context) error {
+		tmpl := template.Must(template.ParseFiles("templates/sheets.html"))
+		return tmpl.Execute(c.Response().Writer, nil)
+	}
+}
+
+func (s *server) handleSheetView() echo.HandlerFunc {
+	return func(c echo.Context) error {
 		tmpl := template.Must(template.ParseFiles("templates/charactersheet.html"))
 		return tmpl.Execute(c.Response().Writer, nil)
 	}
