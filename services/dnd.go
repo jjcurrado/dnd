@@ -1,24 +1,25 @@
-package app
+package services
 
 import (
+	database "dnd/db"
 	util "dnd/utilities"
 	"fmt"
 	"sync"
 )
 
 type DNDservice struct {
-	ai     *AIservice
-	spells *spellTable
+	ai *AIservice
+	db *database.DB
 }
 
-func newDNDService(ai *AIservice, spells *spellTable) *DNDservice {
+func NewDNDService(ai *AIservice, db *database.DB) *DNDservice {
 	dnd := &DNDservice{}
 	dnd.ai = ai
-	dnd.spells = spells
+	dnd.db = db
 	return dnd
 }
 
-func (dnd *DNDservice) createCharacter(prompt string, options util.Options) util.Character {
+func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) util.Character {
 
 	res := dnd.ai.sendRequest(prompt)
 	char := util.Character{}
@@ -52,7 +53,7 @@ func (dnd *DNDservice) createCharacter(prompt string, options util.Options) util
 
 			go func(SpellName string, index int) {
 				defer wg.Done()
-				s, err := dnd.spells.find(SpellName)
+				s, err := dnd.db.Spells.Find(SpellName)
 
 				if err == nil && s.Name != "" {
 					details[index] = s
@@ -69,7 +70,7 @@ func (dnd *DNDservice) createCharacter(prompt string, options util.Options) util
 						panic(err)
 					}
 
-					dnd.spells.insert(s)
+					dnd.db.Spells.Insert(s)
 					details[index] = s
 				}
 			}(l.Spells[i], i)

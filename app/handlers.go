@@ -27,7 +27,7 @@ func (s *server) handleCharacterCreate() echo.HandlerFunc {
 			return echo.NewHTTPError(http.StatusBadRequest, err)
 		}
 
-		character := s.dnd.createCharacter(prompt, options)
+		character := s.dnd.CreateCharacter(prompt, options)
 		return templates.Sheet(character).Render(c.Request().Context(), c.Response())
 	}
 }

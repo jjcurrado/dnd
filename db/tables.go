@@ -1,4 +1,4 @@
-package app
+package database
 
 import (
 	"database/sql"
@@ -21,7 +21,7 @@ func newSpellTable(db *sql.DB) *spellTable {
 	return &spellTable{db: db}
 }
 
-func (s *spellTable) find(name string) (utilities.Spell, error) {
+func (s *spellTable) Find(name string) (utilities.Spell, error) {
 	row := s.db.QueryRow(`SELECT name, level, duration, range, description, casting_time, Components, School FROM spells WHERE name=$1;`, name)
 
 	var (
@@ -54,7 +54,7 @@ func (s *spellTable) find(name string) (utilities.Spell, error) {
 
 }
 
-func (s *spellTable) insert(spell utilities.Spell) (int64, error) {
+func (s *spellTable) Insert(spell utilities.Spell) (int64, error) {
 	insertStatement := "INSERT INTO spells (name, description, level, school, duration, casting_time, range, components) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
 	result, err := s.db.Exec(insertStatement, spell.Name, spell.Description, spell.Level, spell.School, spell.Duration, spell.CastingTime, spell.Range, spell.Components)
 

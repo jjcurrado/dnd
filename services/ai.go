@@ -1,4 +1,4 @@
-package app
+package services
 
 import (
 	"context"
@@ -15,7 +15,7 @@ type AIservice struct {
 	tools  []openai.Tool
 }
 
-func newAIService() (*AIservice, error) {
+func NewAIService() (*AIservice, error) {
 
 	ai := &AIservice{}
 	err := godotenv.Load(".env")
@@ -61,6 +61,7 @@ func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
 
 // check the response from OpenAI to get the function call arguments
 // TODO: Handle empty choices, handle multiple choices (i.e. multiple character creations)
+// probably need a custom interface of some sort here to handle different possible outcomes
 func (ai *AIservice) getAIResponse(res openai.ChatCompletionResponse, out any) error {
 	msg := res.Choices[0].Message
 	return json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &out)

@@ -1,4 +1,4 @@
-<form class="prompt-form">
+<form id="prompt" class="prompt-form">
     <textarea
         class="prompt-text"
         id="prompt"
@@ -26,9 +26,9 @@
     </div>
     <input
         class="submit-btn"
-        hx-indicator="#char-sheet"
+        hx-indicator="#prompt"
         hx-post="/character"
-        hx-target="#char-sheet"
+        hx-target="#prompt"
         hx-swap="outerHTML"
         type="submit"
         value="Submit"

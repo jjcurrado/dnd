@@ -1,7 +1,8 @@
 package app
 
 import (
-	"database/sql"
+	database "dnd/db"
+	"dnd/services"
 	"log"
 	"net/http"
 
@@ -9,40 +10,25 @@ import (
 )
 
 type server struct {
-	e *echo.Echo
-
-	db     *sql.DB
-	spells *spellTable
-
-	ai  *AIservice
-	dnd *DNDservice
+	e   *echo.Echo
+	db  *database.DB
+	ai  *services.AIservice
+	dnd *services.DNDservice
 }
 
-func NewServer() *server {
+func NewServer(e *echo.Echo, ai *services.AIservice, db *database.DB) *server {
 
 	s := &server{}
-	s.e = echo.New()
+	s.e = e
 
-	var err error
-
-	s.db, err = newDB()
-	if err != nil {
-		panic(err)
-	}
-	s.spells = newSpellTable(s.db)
-
-	s.ai, err = newAIService()
-	if err != nil {
-		panic(err)
-	}
-
-	s.dnd = newDNDService(s.ai, s.spells)
+	s.db = db
+	s.ai = ai
+	s.dnd = services.NewDNDService(ai, db)
 
 	s.e.Static("/static", "static")
 	s.routes()
 
 	return s
-
 }
 
 func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {

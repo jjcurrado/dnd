@@ -1,4 +1,4 @@
-package app
+package database
 
 import (
 	"database/sql"
@@ -9,22 +9,27 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func newDB() (*sql.DB, error) {
-	err := godotenv.Load(".env")
+type DB struct {
+	db     *sql.DB
+	Spells *spellTable
+}
 
+func NewDB() (*DB, error) {
+	newDB := &DB{}
+
+	// load in sql db config from env
+	err := godotenv.Load(".env")
 	if err != nil {
 		return nil, err
 	}
-
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	dbname := os.Getenv("DB_NAME")
-
 	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
-	db, err := sql.Open("postgres", psqlInfo)
 
+	db, err := sql.Open("postgres", psqlInfo)
 	if err != nil {
 		return nil, err
 	}
@@ -33,7 +38,15 @@ func newDB() (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
+	spells := newSpellTable(db)
+
+	newDB.db = db
+	newDB.Spells = spells
 
 	fmt.Println("Successfully connected!")
-	return db, nil
+	return newDB, nil
+}
+
+func (db *DB) Close() {
+	db.db.Close()
 }
