@@ -10,6 +10,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Middleware to log the host and method of incoming requests to the given handler
 func (s *server) handleLogging(callback echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		fmt.Printf("----------------------\nHOST : %v\nMETHOD : %v\n----------------------\n", c.Request().URL, c.Request().Method)
@@ -17,10 +18,9 @@ func (s *server) handleLogging(callback echo.HandlerFunc) echo.HandlerFunc {
 	}
 }
 
+// Create a character sheet from form data and render the HTML to the response
 func (s *server) handleCharacterCreate() echo.HandlerFunc {
-
 	return func(c echo.Context) error {
-
 		options := utilities.ParseOptions(c)
 		prompt, err := utilities.ParsePrompt(c)
 		if err != nil {
@@ -32,6 +32,7 @@ func (s *server) handleCharacterCreate() echo.HandlerFunc {
 	}
 }
 
+// Gives the landing page for the website : index.html
 func (s *server) handleHomePage() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		tmpl := template.Must(template.ParseFiles("templates/index.html"))
@@ -39,6 +40,7 @@ func (s *server) handleHomePage() echo.HandlerFunc {
 	}
 }
 
+// Gives the current welcome message : welcome.html
 func (s *server) handleWelcome() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		tmpl := template.Must(template.ParseFiles("templates/welcome.html"))
@@ -46,6 +48,7 @@ func (s *server) handleWelcome() echo.HandlerFunc {
 	}
 }
 
+// Gives the form with text input and submission for creating a character: prompt.html
 func (s *server) handlePrompt() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		tmpl := template.Must(template.ParseFiles("templates/prompt.html"))

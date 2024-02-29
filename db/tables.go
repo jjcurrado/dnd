@@ -57,16 +57,12 @@ func (s *spellTable) Find(name string) (utilities.Spell, error) {
 func (s *spellTable) Insert(spell utilities.Spell) (int64, error) {
 	insertStatement := "INSERT INTO spells (name, description, level, school, duration, casting_time, range, components) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
 	result, err := s.db.Exec(insertStatement, spell.Name, spell.Description, spell.Level, spell.School, spell.Duration, spell.CastingTime, spell.Range, spell.Components)
-
 	if err != nil {
 		return 0, fmt.Errorf("error inserting spell: %v", err)
 	}
-
 	id, err := result.LastInsertId()
-
 	if err != nil {
 		return 0, fmt.Errorf("error inserting spell: %v", err)
 	}
-
 	return id, nil
 }

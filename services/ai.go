@@ -10,26 +10,24 @@ import (
 	"github.com/sashabaranov/go-openai"
 )
 
+// A service to communicate with OpenAI using tool call functionality
 type AIservice struct {
 	client *openai.Client
 	tools  []openai.Tool
 }
 
 func NewAIService() (*AIservice, error) {
-
 	ai := &AIservice{}
 	err := godotenv.Load(".env")
-
 	if err != nil {
 		return nil, err
 	}
-
 	ai.client = openai.NewClient(os.Getenv("API_KEY"))
 	ai.tools = util.Functions
 	return ai, nil
 }
 
-// send a request to the openai API and check for errors
+// Send a request to the openai API and check for errors
 // return the response.
 func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
 	// prime the dialogue for the ai
@@ -43,9 +41,7 @@ func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
 			Content: prompt,
 		},
 	}
-
 	ctx := context.Background()
-
 	res, err := ai.client.CreateChatCompletion(
 		ctx,
 		openai.ChatCompletionRequest{
