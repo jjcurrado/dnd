@@ -25,6 +25,7 @@ func NewServer(e *echo.Echo, ai *services.AIservice, db *database.DB) *server {
 	s.ai = ai
 	s.dnd = services.NewDNDService(ai, db)
 	s.e.Static("/static", "static")
+	s.e.Use(s.logRequests)
 	s.routes()
 	return s
 }
