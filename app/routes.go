@@ -8,7 +8,9 @@ func (s *server) routes() {
 	s.e.GET("/prompt", s.handlePrompt())
 	s.e.GET("/sheets", s.handleSheetsView())
 	s.e.GET("/notes", s.handleSheetView())
+	s.e.GET("/upload", s.handleFileUploadView())
 
 	// POST
 	s.e.POST("/character", s.handleCharacterCreate())
+	s.e.POST("/upload", s.handleFileUpload())
 }

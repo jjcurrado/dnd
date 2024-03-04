@@ -1,0 +1,13 @@
+<form id="prompt">
+    <label for="f"><h1>Choose a file to upload</h1></label>
+    <input type="file" id="f" name="f" />
+    <input
+        class="submit-btn"
+        hx-indicator="#prompt"
+        hx-post="/upload"
+        hx-target="#prompt"
+        hx-encoding="multipart/form-data"
+        type="submit"
+        value="Submit"
+    />
+</form>

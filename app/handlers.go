@@ -3,20 +3,12 @@ package app
 import (
 	"dnd/templates"
 	"dnd/utilities"
-	"fmt"
+	"log"
 	"net/http"
 	"text/template"
 
 	"github.com/labstack/echo/v4"
 )
-
-// Middleware to log the host and method of incoming requests to the given handler
-func (s *server) handleLogging(callback echo.HandlerFunc) echo.HandlerFunc {
-	return func(c echo.Context) error {
-		fmt.Printf("----------------------\nHOST : %v\nMETHOD : %v\n----------------------\n", c.Request().URL, c.Request().Method)
-		return callback(c)
-	}
-}
 
 // Create a character sheet from form data and render the HTML to the response
 func (s *server) handleCharacterCreate() echo.HandlerFunc {
@@ -67,5 +59,23 @@ func (s *server) handleSheetView() echo.HandlerFunc {
 	return func(c echo.Context) error {
 		tmpl := template.Must(template.ParseFiles("templates/charactersheet.html"))
 		return tmpl.Execute(c.Response().Writer, nil)
+	}
+}
+
+func (s *server) handleFileUploadView() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		tmpl := template.Must(template.ParseFiles("templates/fileupload.html"))
+		return tmpl.Execute(c.Response().Writer, nil)
+	}
+}
+
+func (s *server) handleFileUpload() echo.HandlerFunc {
+	return func(c echo.Context) error {
+		s, e := c.FormFile("f")
+		if e != nil {
+			panic(e)
+		}
+		log.Print(s.Filename)
+		return nil
 	}
 }
