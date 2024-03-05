@@ -15,6 +15,7 @@ CREATE TABLE characters (
    level INTEGER,
    class VARCHAR(255),
    subclass VARCHAR(255),
+   caster BOOLEAN DEFAULT FALSE,
    ac INTEGER,
    str INTEGER,
    dex INTEGER,
@@ -24,7 +25,6 @@ CREATE TABLE characters (
    cha  INTEGER,
    initiative INTEGER,
    speed INTEGER,
-
 );
 CREATE TABLE characters_spells(
     character_id UUID REFERENCES characters(id),

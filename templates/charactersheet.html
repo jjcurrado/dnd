@@ -1,31 +1,27 @@
-<div class="sheet" id="char-sheet">
+<form class="sheet" id="char-sheet">
     <div class="sheet-header block">
-        <div>Level 4</div>
+        <div style="margin: 5px 0px 10px 5px">Level 4</div>
         <div class="header-row">
             <div class="header-column">
                 <!--row-->
                 <div>
-                    <div style="border-bottom: 1px solid darkgray">
-                        John Placeholder
-                    </div>
-                    <div style="font-size: small; margin-right: 5px">Name</div>
+                    <input type="text" name="name" value="John Placeholder" />
+                    <div class="header-label">Name</div>
                 </div>
                 <div>
-                    <div style="border-bottom: 1px solid darkgray">Fighter</div>
-                    <div style="font-size: small">Class/Subclass</div>
+                    <input type="text" name="class" value="Fighter" />
+                    <div class="header-label">Class/Subclass</div>
                 </div>
             </div>
             <div class="header-column">
                 <!--row-->
                 <div>
-                    <div style="border-bottom: 1px solid darkgray">Acolyte</div>
-                    <div style="font-size: small; margin-right: 5px">
-                        Background
-                    </div>
+                    <input type="text" name="background" value="Acolyte" />
+                    <div class="header-label">Background</div>
                 </div>
                 <div class="header-item">
-                    <div style="border-bottom: 1px solid darkgray">Elf</div>
-                    <div style="font-size: small">Race</div>
+                    <input type="text" name="race" value="Elf" />
+                    <div class="header-label">Race</div>
                 </div>
             </div>
         </div>
@@ -35,7 +31,16 @@
             <b>Strength</b>
             <div>
                 <div class="score">
-                    <h2 style="padding: 10px">4</h2>
+                    <input
+                        style="
+                            text-align: center;
+                            font-size: xx-large;
+                            width: 100%;
+                        "
+                        name="strength"
+                        type="text"
+                        value="4"
+                    />
                 </div>
             </div>
             <b>Dexterity</b>
@@ -106,4 +111,12 @@
             </div>
         </div>
     </div>
-</div>
+    <input
+        class="submit-btn"
+        hx-indicator="#char-sheet"
+        hx-post="/upload"
+        hx-target="#char-sheet"
+        type="submit"
+        value="Submit"
+    />
+</form>

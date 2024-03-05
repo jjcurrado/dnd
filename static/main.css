@@ -27,11 +27,25 @@ b {
     border: 1px solid lightgray;
     box-shadow: 2px 2px 2px lightgray;
 }
+
 .sheet-header {
     display: flex;
     margin-bottom: 10px;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.sheet-header input[type="text" i] {
+    padding: 2px 0px 2px 2px;
+    margin-bottom: 2px;
+    font-size: medium;
+    width: 100%;
+}
+
+.header-label {
+    font-size: small;
+    margin-right: 5px;
+    margin-bottom: 3px;
 }
 .main {
     display: flex;
@@ -54,6 +68,7 @@ b {
 }
 .header-column {
     min-width: 33%;
+    margin-right: 10px;
 }
 .header-row {
     display: flex;

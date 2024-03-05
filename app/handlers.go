@@ -71,11 +71,12 @@ func (s *server) handleFileUploadView() echo.HandlerFunc {
 
 func (s *server) handleFileUpload() echo.HandlerFunc {
 	return func(c echo.Context) error {
-		s, e := c.FormFile("f")
-		if e != nil {
-			panic(e)
-		}
-		log.Print(s.Filename)
+		log.Print(c.FormParams())
+		//s, e := c.FormFile("f")
+		//if e != nil {
+		//panic(e)
+		//}
+		//log.Print(s.Filename)
 		return nil
 	}
 }
