@@ -39,7 +39,7 @@ b {
     padding: 2px 0px 2px 2px;
     margin-bottom: 2px;
     font-size: medium;
-    width: 100%;
+    width: 98%;
 }
 
 .header-label {
@@ -68,11 +68,12 @@ b {
 }
 .header-column {
     min-width: 33%;
-    margin-right: 10px;
 }
 .header-row {
     display: flex;
     justify-content: space-between;
+    margin-right: 4px;
+    margin-left: 4px;
 }
 .stats {
     display: flex;
