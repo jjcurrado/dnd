@@ -14,6 +14,10 @@ body {
 input[type="text" i]{
     border: none;
 }
+
+li {
+    cursor: pointer;
+}
 .main {
     display: flex;
     justify-content: space-between;
