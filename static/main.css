@@ -100,6 +100,10 @@ b {
     vertical-align: center;
 }
 
+.weapon {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
 .name-tile {
     display: inline-block;
     vertical-align: center;
@@ -148,6 +152,11 @@ b {
     background-color: lightgray;
     border-radius: 10px;
     justify-content: center;
+}
+.score input[type="text" i] {
+    text-align: center;
+    font-size: xx-large;
+    width: 100%;
 }
 .prompt-text {
     justify-content: center;
