@@ -1,7 +1,7 @@
 <form class="sheet" id="char-sheet">
     <input type="hidden" name="id" value="character-uuid-goes-here" />
     <div class="sheet-header block">
-        <div style="margin: 5px 0px 10px 5px">Level 4</div>
+        <div style="margin: 5px 0px 10px 5px"><b>Level 4</b></div>
         <div class="header-row">
             <div class="header-column">
                 <!--row-->
@@ -68,6 +68,7 @@
         </div>
         <div class="sheet-center">
             <div
+                id="top-center"
                 style="
                     display: flex;
                     flex-direction: row;
@@ -75,50 +76,66 @@
                 "
             >
                 <div class="block" style="width: 28%">
-                    AC<br />
+                    <b>AC</b><br />
                     <input
-                        style="width: 100%"
                         type="text"
                         name="ac"
                         value="15"
                     />
                 </div>
                 <div class="block" style="width: 28%">
-                    Initiative<br />
-                    +5
+                    <b>Initiative</b><br />
+                    <input
+                        type="text"
+                        name="initiative"
+                        value="+2"
+                    />
                 </div>
                 <div class="block" style="width: 28%">
-                    Speed<br />
-                    35
+                    <b>Speed</b><br />
+                    <input
+                        type="text"
+                        name="speed"
+                        value="30"
+                    />
                 </div>
             </div>
             <div class="block" style="margin: 10px 0px 10px 0px">
-                <button
-                    class="weapon block"
-                    style="
-                        display: flex;
-                        flex-direction: row;
-                        width: 100%;
-                        justify-content: space-evenly;
-                    "
-                >
+                <b>Attacks and Spellcasting</b>
+                <button class="weapon block">
                     <div>Longsword</div>
                     <div>+5</div>
                     <div>1d10 + 5</div>
                 </button>
-                <button
-                    class="weapon block"
-                    style="
-                        display: flex;
-                        flex-direction: row;
-                        width: 100%;
-                        justify-content: space-evenly;
-                    "
-                >
+                <button class="weapon block">
                     <div>Longsword</div>
                     <div>+5</div>
                     <div>1d10 + 5</div>
                 </button>
+            </div>
+            <div style="display: flex;width: 100%;height: 60%;flex-direction: row;justify-content: space-between;">
+                <div style="display: flex;flex-direction: column; row-gap: 8px; width:46%">
+                    <div style="width:100%" class="block">
+                        <b>Strength</b>
+                    </div>
+                    <div style="width:100%" class="block">
+                        <b>Dexterity</b>
+                    </div>
+                    <div style="width:100%" class="block">
+                        <b>Constitution</b>
+                    </div>
+                </div>
+                <div style="display: flex;flex-direction: column; row-gap: 8px; width:46%">
+                    <div style="width:100%" class="block">
+                        <b>Wisdom</b>
+                    </div>
+                    <div style="width:100%" class="block">
+                        <b>Intelligence</b>
+                    </div>
+                    <div style="width:100%" class="block">
+                        <b>Charisma</b>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="sheet-right">
