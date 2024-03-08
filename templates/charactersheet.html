@@ -77,30 +77,21 @@
             >
                 <div class="block" style="width: 28%">
                     <b>AC</b><br />
-                    <input
-                        type="text"
-                        name="ac"
-                        value="15"
-                    />
+                    <input type="text" name="ac" value="15" />
                 </div>
                 <div class="block" style="width: 28%">
                     <b>Initiative</b><br />
-                    <input
-                        type="text"
-                        name="initiative"
-                        value="+2"
-                    />
+                    <input type="text" name="initiative" value="+2" />
                 </div>
                 <div class="block" style="width: 28%">
                     <b>Speed</b><br />
-                    <input
-                        type="text"
-                        name="speed"
-                        value="30"
-                    />
+                    <input type="text" name="speed" value="30" />
                 </div>
             </div>
-            <div class="block" style="margin: 10px 0px 10px 0px">
+            <div
+                class="block"
+                style="display: flex; flex-direction: column; row-gap: 10px"
+            >
                 <b>Attacks and Spellcasting</b>
                 <button class="weapon block">
                     <div>Longsword</div>
@@ -113,42 +104,238 @@
                     <div>1d10 + 5</div>
                 </button>
             </div>
-            <div style="display: flex;width: 100%;flex-direction: row;justify-content: space-between;">
-                <div style="display: flex;flex-direction: column; row-gap: 8px; width:46%">
-                    <div style="display:flex;flex-direction: column; row-gap: 10px; width:100%; padding-bottom: 10px;" class="block">
+            <div
+                style="
+                    display: flex;
+                    width: 100%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                "
+            >
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 8px;
+                        width: 46%;
+                    "
+                >
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
                         <b>Strength</b>
-                        <button class="skill"><input type="checkbox" class="check" name="athletics" value="false">Athletics</button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="athletics"
+                                value="false"
+                            />Athletics
+                        </button>
                     </div>
-                    <div style="display:flex;flex-direction: column; row-gap: 10px; width:100%; padding-bottom: 10px;" class="block">
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
                         <b>Dexterity</b>
-                        <button class="skill"><input checked type="checkbox" class="check" name="acrobatics" value="true">Acrobatics</button>
-                        <button class="skill"><input type="checkbox" class="check" name="sleight_of_hand" value="false">Sleight of Hand</button>
-                        <button class="skill"><input type="checkbox" class="check" name="stealth" value="false">Stealth</button>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                class="check"
+                                name="acrobatics"
+                                value="true"
+                            />Acrobatics
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="sleight_of_hand"
+                                value="false"
+                            />Sleight of Hand
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="stealth"
+                                value="false"
+                            />Stealth
+                        </button>
                     </div>
-                    <div style="display:flex;flex-direction: column; row-gap: 10px; width:100%; padding-bottom: 10px;" class="block">
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
                         <b>Charisma</b>
-                        <button class="skill"><input checked type="checkbox" class="check" name="deception" value="true">Deception</button>
-                        <button class="skill"><input type="checkbox" class="check" name="intimidation" value="false">Intimidation</button>
-                        <button class="skill"><input type="checkbox" class="check" name="performance" value="false">Performance</button>
-                        <button class="skill"><input type="checkbox" class="check" name="persuasion" value="false">Persuasion</button>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                class="check"
+                                name="deception"
+                                value="true"
+                            />Deception
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="intimidation"
+                                value="false"
+                            />Intimidation
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="performance"
+                                value="false"
+                            />Performance
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="persuasion"
+                                value="false"
+                            />Persuasion
+                        </button>
                     </div>
                 </div>
-                <div style="display: flex;flex-direction: column; row-gap: 8px; width:46%">
-                    <div style="display:flex;flex-direction: column; row-gap: 10px; width:100%; padding-bottom: 10px;" class="block">
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 8px;
+                        width: 46%;
+                    "
+                >
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
                         <b>Wisdom</b>
-                        <button class="skill"><input checked type="checkbox" style="margin-left:5px;margin-right:8px;" name="animal_handling" value="true">Animal Handling</button>
-                        <button class="skill"><input type="checkbox" class="check" name="insight" value="false">Insight</button>
-                        <button class="skill"><input type="checkbox" class="check" name="medicine" value="false">Medicine</button>
-                        <button class="skill"><input type="checkbox" class="check" name="perception" value="false">Perception</button>
-                        <button class="skill"><input type="checkbox" class="check" name="survival" value="false">Survival</button>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                style="margin-left: 5px; margin-right: 8px"
+                                name="animal_handling"
+                                value="true"
+                            />Animal Handling
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="insight"
+                                value="false"
+                            />Insight
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="medicine"
+                                value="false"
+                            />Medicine
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="perception"
+                                value="false"
+                            />Perception
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="survival"
+                                value="false"
+                            />Survival
+                        </button>
                     </div>
-                    <div style="display:flex;flex-direction: column; row-gap: 10px; width:100%; padding-bottom: 10px;" class="block">
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
                         <b>Intelligence</b>
-                        <button class="skill"><input checked type="checkbox" style="margin-left:5px;margin-right:8px;" name="arcana" value="true">Arcana</button>
-                        <button class="skill"><input type="checkbox" class="check" name="history" value="false">History</button>
-                        <button class="skill"><input type="checkbox" class="check" name="investigation" value="false">Investigation</button>
-                        <button class="skill"><input type="checkbox" class="check" name="nature" value="false">Nature</button>
-                        <button class="skill"><input type="checkbox" class="check" name="religion" value="false">Religion</button>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                style="margin-left: 5px; margin-right: 8px"
+                                name="arcana"
+                                value="true"
+                            />Arcana
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="history"
+                                value="false"
+                            />History
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="investigation"
+                                value="false"
+                            />Investigation
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="nature"
+                                value="false"
+                            />Nature
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="religion"
+                                value="false"
+                            />Religion
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,12 +345,24 @@
             <button class="block">View Ideals</button>
             <button class="block">View Bonds</button>
             <button class="block">View Flaws</button>
-            <div class="block">
+            <div
+                class="block"
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 10px;
+                    text-align: center;
+                "
+            >
+                <b>Features and Traits</b>
                 <button class="block" style="width: 100%; margin-bottom: 4px">
                     Lucky
                 </button>
                 <button class="block" style="width: 100%">
                     Halfling Nimbleness
+                </button>
+                <button style="margin-top: auto">
+                    + Add a Feature or Trait
                 </button>
             </div>
         </div>

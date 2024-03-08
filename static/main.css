@@ -11,7 +11,7 @@ body {
     width: 98%;
 }
 
-input[type="text" i]{
+input[type="text" i] {
     border: none;
 }
 
@@ -49,13 +49,13 @@ li {
 }
 
 .skill {
-    border:none;
-    text-align: start; 
-    width:100%;
+    border: none;
+    text-align: start;
+    width: 100%;
 }
 .check {
-    margin-left:5px;
-    margin-right:8px;
+    margin-left: 5px;
+    margin-right: 8px;
 }
 .header-row {
     display: flex;
@@ -111,12 +111,9 @@ li {
     border: 1px solid lightgray;
     padding: 5px;
     box-shadow: 2px 2px 2px lightgray;
-    vertical-align: center;
 }
 
 .weapon {
-    margin-top: 4px;
-    margin-bottom: 4px;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -136,21 +133,21 @@ li {
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 45%;
+    row-gap: 10px;
+    width: 50%;
 }
 
-#top-center input[type="text" i]{
+#top-center input[type="text" i] {
     text-align: center;
     width: 50%;
     font-size: x-large;
-    margin:10px;
-
+    margin: 10px;
 }
 .sheet-right {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 30%;
+    width: 25%;
 }
 
 .sheet-right > button {
