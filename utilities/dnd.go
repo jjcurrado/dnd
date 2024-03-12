@@ -2,11 +2,23 @@ package utilities
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
 func Modifier(score int) int {
 	return (score - 10) / 2
+}
+func ModifierString(score int) string {
+	mod := (score - 10) / 2
+	s := strconv.Itoa(mod)
+	if mod > 0 {
+		s = "+" + s
+	} else if mod < 0 {
+		s = "-" + s
+	}
+
+	return s
 }
 
 // Returns which ability modifier is used in spell attack rolls

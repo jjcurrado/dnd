@@ -5,74 +5,383 @@ import(
   "strconv"
 )
 templ Sheet(c util.Character) {
-        <div class="sheet" id="char-sheet">
-          <div class="sheet-header">
-            <div>Level {strconv.Itoa(c.Level)}</div>
-            <div class="header-row">
-            <div class="header-column"> <!--row-->
-              <div>
-                <div style="border-bottom: 1px solid darkgray;">{c.Name}</div>
-                <div style="font-size: small; margin-right: 5px">Name</div>
-              </div>
-              <div>
-                <div style="border-bottom: 1px solid darkgray;">{c.Class}/{ c.Subclass} </div>
-                <div style="font-size: small;">Class/Subclass</div>
-              </div>
+<form class="sheet" id="char-sheet">
+    <input type="hidden" name="id" value="character-uuid-goes-here" />
+    <div class="sheet-header block">
+        <div style="margin: 5px 0px 10px 5px"><b>Level 4</b></div>
+        <div class="header-row">
+            <div class="header-column">
+                <!--row-->
+                <div>
+                    <input type="text" name="name" value={c.Name} />
+                    <div class="header-label">Name</div>
+                </div>
+                <div>
+                    <input type="text" name="class" value={c.Class} />
+                    <div class="header-label">Class/Subclass</div>
+                </div>
             </div>
-            <div class="header-column"> <!--row-->
-              <div>
-                <div style="border-bottom: 1px solid darkgray;">{c.Background}</div>
-                <div style="font-size: small; margin-right: 5px">Background</div>
-              </div>
-              <div class="header-item">
-                <div style="border-bottom: 1px solid darkgray;">{c.Race}</div>
-                <div style="font-size: small;">Race</div>
-              </div>
+            <div class="header-column">
+                <!--row-->
+                <div>
+                    <input type="text" name="background" value={c.Background} />
+                    <div class="header-label">Background</div>
+                </div>
+                <div class="header-item">
+                    <input type="text" name="race" value={c.Race} />
+                    <div class="header-label">Race</div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="main">
-        <div class="stats">
-          <b>Strength</b>
-          <div class="stat">
-            <div class="score">
-              <h2 style="padding: 10px;">{strconv.Itoa(c.Strength)}</h2>
+    </div>
+    <div class="main">
+        <div class="stats block">
+            <b>Strength</b>
+            <div>
+                <div class="score">
+                    <input name="strength" type="text" value={strconv.Itoa(c.Strength)} />
+                </div>
             </div>
-          </div>
-          <b>Dexterity</b>
-          <div class="stat">
-            <div class="score">
-              <h2 style="padding: 10px;">{strconv.Itoa(c.Dexterity)}</h2>
+            <b>Dexterity</b>
+            <div>
+                <div class="score">
+                    <input name="dexterity" type="text" value={strconv.Itoa(c.Dexterity)} />
+                </div>
             </div>
-          </div>
-          <b>Constitution</b>
-          <div class="stat">
-            <div class="score">
-              <h2 style="padding: 10px;">{strconv.Itoa(c.Constitution)}</h2>
+            <b>Constitution</b>
+            <div>
+                <div class="score">
+                    <input name="constitution" type="text" value={strconv.Itoa(c.Constitution)} />
+                </div>
             </div>
-          </div>
-          <b>Wisdom</b>
-          <div class="stat">
-            <div class="score">
-              <h2 style="padding: 10px;">{strconv.Itoa(c.Wisdom)}</h2>
+            <b>Wisdom</b>
+            <div>
+                <div class="score">
+                    <input name="wisdom" type="text" value={strconv.Itoa(c.Wisdom)} />
+                </div>
             </div>
-          </div>
-          <b>Intelligence</b>
-          <div class="stat">
-            <div class="score">
-              <h2 style="padding: 10px">{strconv.Itoa(c.Intelligence)}</h2>
+            <b>Intelligence</b>
+            <div>
+                <div class="score">
+                    <input name="intelligence" type="text" value={strconv.Itoa(c.Intelligence)} />
+                </div>
             </div>
-          </div>
-          <b>Charisma</b>
-          <div class="stat">
-            <div class="score">
-              <h2 style="padding: 10px;">{strconv.Itoa(c.Charisma)}</h2>
+            <b>Charisma</b>
+            <div>
+                <div class="score">
+                    <input name="charisma" type="text" value={strconv.Itoa(c.Charisma)} />
+                </div>
             </div>
-          </div>
         </div>
-        <div>
+        <div class="sheet-center">
+            <div
+                id="top-center"
+                style="
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                "
+            >
+                <div class="block" style="width: 28%">
+                    <b>AC</b><br />
+                    <input type="text" name="ac" value={strconv.Itoa(c.AC)} />
+                </div>
+                <div class="block" style="width: 28%">
+                    <b>Initiative</b><br />
+                    <input type="text" name="initiative" value={util.ModifierString(c.Dexterity)} />
+                </div>
+                <div class="block" style="width: 28%">
+                    <b>Speed</b><br />
+                    <input type="text" name="speed" value={strconv.Itoa(c.Speed)} />
+                </div>
+            </div>
+            <div
+                class="block"
+                style="display: flex; flex-direction: column; row-gap: 10px"
+            >
+                <b>Attacks and Spellcasting</b>
+                <button class="weapon block">
+                    <div>Longsword</div>
+                    <div>+5</div>
+                    <div>1d10 + 5</div>
+                </button>
+                <button class="weapon block">
+                    <div>Longsword</div>
+                    <div>+5</div>
+                    <div>1d10 + 5</div>
+                </button>
+            </div>
+            <div
+                style="
+                    display: flex;
+                    width: 100%;
+                    flex-direction: row;
+                    justify-content: space-between;
+                "
+            >
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 8px;
+                        width: 46%;
+                    "
+                >
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
+                        <b>Strength</b>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="athletics"
+                                value="false"
+                            />Athletics
+                        </button>
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
+                        <b>Dexterity</b>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                class="check"
+                                name="acrobatics"
+                                value="true"
+                            />Acrobatics
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="sleight_of_hand"
+                                value="false"
+                            />Sleight of Hand
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="stealth"
+                                value="false"
+                            />Stealth
+                        </button>
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
+                        <b>Charisma</b>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                class="check"
+                                name="deception"
+                                value="true"
+                            />Deception
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="intimidation"
+                                value="false"
+                            />Intimidation
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="performance"
+                                value="false"
+                            />Performance
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="persuasion"
+                                value="false"
+                            />Persuasion
+                        </button>
+                    </div>
+                </div>
+                <div
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        row-gap: 8px;
+                        width: 46%;
+                    "
+                >
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
+                        <b>Wisdom</b>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                style="margin-left: 5px; margin-right: 8px"
+                                name="animal_handling"
+                                value="true"
+                            />Animal Handling
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="insight"
+                                value="false"
+                            />Insight
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="medicine"
+                                value="false"
+                            />Medicine
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="perception"
+                                value="false"
+                            />Perception
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="survival"
+                                value="false"
+                            />Survival
+                        </button>
+                    </div>
+                    <div
+                        style="
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: 10px;
+                            width: 100%;
+                            padding-bottom: 10px;
+                        "
+                        class="block"
+                    >
+                        <b>Intelligence</b>
+                        <button class="skill">
+                            <input
+                                checked
+                                type="checkbox"
+                                style="margin-left: 5px; margin-right: 8px"
+                                name="arcana"
+                                value="true"
+                            />Arcana
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="history"
+                                value="false"
+                            />History
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="investigation"
+                                value="false"
+                            />Investigation
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="nature"
+                                value="false"
+                            />Nature
+                        </button>
+                        <button class="skill">
+                            <input
+                                type="checkbox"
+                                class="check"
+                                name="religion"
+                                value="false"
+                            />Religion
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-          AC {strconv.Itoa(c.AC)}
-      </div>
-      </div>
+        <div class="sheet-right">
+            <button class="block">View Personality Traits</button>
+            <button class="block">View Ideals</button>
+            <button class="block">View Bonds</button>
+            <button class="block">View Flaws</button>
+            <div
+                class="block"
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    row-gap: 10px;
+                    text-align: center;
+                "
+            >
+                <b>Features and Traits</b>
+                <button class="block" style="width: 100%; margin-bottom: 4px">
+                    Lucky
+                </button>
+                <button class="block" style="width: 100%">
+                    Halfling Nimbleness
+                </button>
+                <button style="margin-top: auto">
+                    + Add a Feature or Trait
+                </button>
+            </div>
+        </div>
+    </div>
+    <input
+        class="submit-btn"
+        style="width: 100%"
+        hx-indicator="#char-sheet"
+        hx-post="/upload"
+        hx-target="#char-sheet"
+        type="submit"
+        value="Submit"
+    />
+</form>
 }
