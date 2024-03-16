@@ -41,6 +41,10 @@ type Spell struct {
 	School      string
 }
 
+type Error struct {
+	Message string
+}
+
 type SpellResponse struct {
 	Spell
 }

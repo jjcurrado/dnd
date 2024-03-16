@@ -110,6 +110,25 @@ var Functions = []openai.Tool{
 		},
 	},
 	{
+		// Report Error
+		// report some issue that occured with the request
+		Type: openai.ToolTypeFunction,
+		Function: openai.FunctionDefinition{
+			Name:        "ReportError",
+			Description: "Report an error to the user if there is something wrong with their request.",
+			Parameters: jsonschema.Definition{
+				Type: jsonschema.Object,
+				Properties: map[string]jsonschema.Definition{
+					"Message": {
+						Type:        jsonschema.String,
+						Description: "A message explaining what went wrong with the user request",
+					},
+				},
+				Required: []string{"Message"},
+			},
+		},
+	},
+	{
 		// CreateSpellList
 		// gets an array of strings - names of spells
 		Type: openai.ToolTypeFunction,

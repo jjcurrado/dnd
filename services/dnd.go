@@ -4,6 +4,7 @@ import (
 	database "dnd/db"
 	util "dnd/utilities"
 	"fmt"
+	"log"
 	"sync"
 )
 
@@ -24,7 +25,7 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) util
 	char := util.Character{}
 	err := dnd.ai.getAIResponse(res, &char)
 	if err != nil {
-		panic(err)
+		log.Printf("Error received: %s", err.Error())
 	}
 	// get a spell list
 	if char.Spellcaster && options.Spells {
