@@ -5,7 +5,6 @@ import (
 	util "dnd/utilities"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -62,13 +61,9 @@ func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
 // probably need a custom interface of some sort here to handle different possible outcomes
 func (ai *AIservice) getAIResponse(res openai.ChatCompletionResponse, out any) error {
 	msg := res.Choices[0].Message
-	fmt.Print(msg)
 	if msg.ToolCalls[0].Function.Name == "ReportError" {
 		err := &util.Error{}
 		json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &err)
-		fmt.Printf("Error: %s\n", err)
-		fmt.Printf("Error Arguments: %s\n", msg.ToolCalls[0].Function.Arguments)
-		fmt.Printf("err : %s\n", err)
 		return errors.New(err.Message)
 	}
 	return json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &out)
