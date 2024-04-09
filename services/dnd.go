@@ -20,12 +20,13 @@ func NewDNDService(ai *AIservice, db *database.DB) *DNDservice {
 	return dnd
 }
 
-func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) util.Character {
+func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (util.Character, error) {
 	res := dnd.ai.sendRequest(prompt)
 	char := util.Character{}
 	err := dnd.ai.getAIResponse(res, &char)
 	if err != nil {
 		log.Printf("Error received: %s", err.Error())
+		return char, err
 	}
 	// get a spell list
 	if char.Spellcaster && options.Spells {
@@ -35,7 +36,7 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) util
 		l := util.SpellList{}
 		err := dnd.ai.getAIResponse(res, &l)
 		if err != nil {
-			panic(err)
+			return char, err
 		}
 
 		num_spells := len(l.Spells)
@@ -67,5 +68,5 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) util
 			util.PrintSpell(spell)
 		}
 	}
-	return char
+	return char, nil
 }

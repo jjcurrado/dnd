@@ -19,7 +19,11 @@ func (s *server) handleCharacterCreate() echo.HandlerFunc {
 			return echo.NewHTTPError(http.StatusBadRequest, err)
 		}
 
-		character := s.dnd.CreateCharacter(prompt, options)
+		character, err := s.dnd.CreateCharacter(prompt, options)
+
+		if err != nil {
+			return s.renderError(err.Error(), c)
+		}
 		return templates.Sheet(character).Render(c.Request().Context(), c.Response())
 	}
 }
@@ -79,4 +83,8 @@ func (s *server) handleFileUpload() echo.HandlerFunc {
 		//log.Print(s.Filename)
 		return nil
 	}
+}
+
+func (s *server) renderError(message string, c echo.Context) error {
+	return templates.Error(message).Render(c.Request().Context(), c.Response())
 }
