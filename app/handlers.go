@@ -4,6 +4,7 @@ import (
 	"dnd/templates"
 	"dnd/utilities"
 	"log"
+	"log/slog"
 	"net/http"
 	"text/template"
 
@@ -16,14 +17,18 @@ func (s *server) handleCharacterCreate() echo.HandlerFunc {
 		options := utilities.ParseOptions(c)
 		prompt, err := utilities.ParsePrompt(c)
 		if err != nil {
+			slog.Error("Error parsing prompts", "msg", err.Error())
 			return echo.NewHTTPError(http.StatusBadRequest, err)
 		}
 
+		slog.Info("Creating Character...", "prompt", prompt)
 		character, err := s.dnd.CreateCharacter(prompt, options)
-
 		if err != nil {
+			slog.Error("Error creating character", "msg", err.Error())
 			return s.renderError(err.Error(), c)
 		}
+		slog.Info("Character created.", "character", character)
+
 		return templates.Sheet(character).Render(c.Request().Context(), c.Response())
 	}
 }

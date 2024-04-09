@@ -17,7 +17,7 @@ type characterTable struct {
 	db *sql.DB
 }
 
-func newCharacterTable(db *sql.DB) *characterTable{
+func newCharacterTable(db *sql.DB) *characterTable {
 	return &characterTable{db: db}
 }
 

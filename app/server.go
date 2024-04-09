@@ -3,8 +3,9 @@ package app
 import (
 	database "dnd/db"
 	"dnd/services"
-	"log"
+	"log/slog"
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo/v4"
 )
@@ -35,11 +36,16 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *server) Start(port string) {
+	slog.Info("Starting Server...")
 	if err := s.e.Start(port); err != http.ErrServerClosed {
-		log.Fatal(err)
+		slog.Error("Error starting server", "msg", err.Error())
+		os.Exit(1)
 	}
+	slog.Info("Started.")
 }
 
 func (s *server) Close() {
+	slog.Info("Closing server...")
 	s.db.Close()
+	slog.Info("Closed.")
 }

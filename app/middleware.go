@@ -1,7 +1,7 @@
 package app
 
 import (
-	"fmt"
+	"log/slog"
 
 	"github.com/labstack/echo/v4"
 )
@@ -9,7 +9,7 @@ import (
 // Middleware to log the host and method of incoming requests to the given handler
 func (s *server) logRequests(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		fmt.Printf("----------------------\nHOST : %v\nMETHOD : %v\n----------------------\n", c.Request().URL, c.Request().Method)
+		slog.Info("Request recieved", "host", c.Request().URL, "method", c.Request().Method)
 		return next(c)
 	}
 }
