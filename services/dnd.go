@@ -5,6 +5,7 @@ import (
 	util "dnd/utilities"
 	"fmt"
 	"log"
+	"log/slog"
 	"sync"
 )
 
@@ -21,6 +22,7 @@ func NewDNDService(ai *AIservice, db *database.DB) *DNDservice {
 }
 
 func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (util.Character, error) {
+	slog.Info("Creating character...", "prompt", prompt, "options", options)
 	res := dnd.ai.sendRequest(prompt)
 	char := util.Character{}
 	err := dnd.ai.getAIResponse(res, &char)
