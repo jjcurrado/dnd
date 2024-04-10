@@ -21,13 +21,10 @@ func (s *server) handleCharacterCreate() echo.HandlerFunc {
 			return echo.NewHTTPError(http.StatusBadRequest, err)
 		}
 
-		slog.Info("Creating Character...", "prompt", prompt)
 		character, err := s.dnd.CreateCharacter(prompt, options)
 		if err != nil {
-			slog.Error("Error creating character", "msg", err.Error())
 			return s.renderError(err.Error(), c)
 		}
-		slog.Info("Character created.", "character", character)
 
 		return templates.Sheet(character).Render(c.Request().Context(), c.Response())
 	}

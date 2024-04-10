@@ -1,6 +1,6 @@
-version: '3.1'
+version: "3.1"
 services:
-   postgres:
+  postgres:
     image: postgres
     ports:
       - "${DB_PORT}:${DB_PORT}"
@@ -9,4 +9,5 @@ services:
       - POSTGRES_DB=${DB_NAME}
       - POSTGRES_USER=${DB_USER}
     volumes:
+      - ./data/postgres:/var/lib/postgresql/data
       - ./postgres-init.sql:/docker-entrypoint-initdb.d/postgres-init.sql

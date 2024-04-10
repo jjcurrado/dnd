@@ -5,6 +5,7 @@ import (
 	util "dnd/utilities"
 	"encoding/json"
 	"errors"
+	"log/slog"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -21,6 +22,7 @@ func NewAIService() (*AIservice, error) {
 	ai := &AIservice{}
 	err := godotenv.Load(".env")
 	if err != nil {
+		slog.Error("Error loading env file.", "msg", err.Error())
 		return nil, err
 	}
 	ai.client = openai.NewClient(os.Getenv("API_KEY"))
@@ -31,6 +33,7 @@ func NewAIService() (*AIservice, error) {
 // Send a request to the openai API and check for errors
 // return the response.
 func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
+	slog.Info("Sending request to OpenAI...", "prompt", prompt)
 	// prime the dialogue for the ai
 	dialog := []openai.ChatCompletionMessage{
 		{
@@ -65,6 +68,10 @@ func (ai *AIservice) sendRequest(prompt string) openai.ChatCompletionResponse {
 // probably need a custom interface of some sort here to handle different possible outcomes
 func (ai *AIservice) getAIResponse(res openai.ChatCompletionResponse, out any) error {
 	msg := res.Choices[0].Message
+	slog.Info("Received openAI response.", "num_calls", len(msg.ToolCalls))
+	for _, value := range msg.ToolCalls {
+		slog.Info("ToolCall recieved.", "tool", value.Function.Name, "args", value.Function.Arguments)
+	}
 	if msg.ToolCalls[0].Function.Name == "ReportError" {
 		err := &util.Error{}
 		json.Unmarshal([]byte(msg.ToolCalls[0].Function.Arguments), &err)
