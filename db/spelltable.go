@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"dnd/utilities"
 	"fmt"
+	"log/slog"
 )
 
 /*
@@ -23,6 +24,7 @@ func newSpellTable(db *sql.DB) *spellTable {
 
 func (s *spellTable) Find(name string) (utilities.Spell, error) {
 	row := s.db.QueryRow(`SELECT name, level, duration, range, description, casting_time, Components, School FROM spells WHERE name=$1;`, name)
+	slog.Info("searching for spell", "name", name)
 
 	var (
 		Name        string
@@ -40,7 +42,7 @@ func (s *spellTable) Find(name string) (utilities.Spell, error) {
 	if err != nil {
 		return utilities.Spell{}, err
 	}
-
+	slog.Info("Found.")
 	return utilities.Spell{
 		Name:        Name,
 		Level:       Level,
@@ -56,6 +58,8 @@ func (s *spellTable) Find(name string) (utilities.Spell, error) {
 
 func (s *spellTable) Insert(spell utilities.Spell) (int64, error) {
 	insertStatement := "INSERT INTO spells (name, description, level, school, duration, casting_time, range, components) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)"
+	slog.Info("inserting into spell table", "name", spell.Name)
+
 	result, err := s.db.Exec(insertStatement, spell.Name, spell.Description, spell.Level, spell.School, spell.Duration, spell.CastingTime, spell.Range, spell.Components)
 	if err != nil {
 		return 0, fmt.Errorf("error inserting spell: %v", err)

@@ -4,7 +4,6 @@ import (
 	database "dnd/db"
 	util "dnd/utilities"
 	"fmt"
-	"log"
 	"log/slog"
 	"sync"
 )
@@ -27,7 +26,7 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (uti
 	char := util.Character{}
 	err := dnd.ai.getAIResponse(res, &char)
 	if err != nil {
-		log.Printf("Error received: %s", err.Error())
+		slog.Error("Error received", "msg", err.Error())
 		return char, err
 	}
 	// get a spell list
@@ -54,6 +53,7 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (uti
 					details[index] = s
 				} else {
 					prompt := fmt.Sprintf("Give me the details for the spell %v", SpellName)
+					slog.Info("creating spell", "name", SpellName)
 					res := dnd.ai.sendRequest(prompt)
 					s := util.Spell{}
 					err := dnd.ai.getAIResponse(res, &s)
@@ -66,9 +66,6 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (uti
 			}(l.Spells[i], i)
 		}
 		wg.Wait()
-		for _, spell := range details {
-			util.PrintSpell(spell)
-		}
 	}
 	return char, nil
 }

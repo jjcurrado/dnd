@@ -24,7 +24,9 @@ CREATE TABLE characters (
    wis INTEGER,
    cha  INTEGER,
    initiative INTEGER,
-   speed INTEGER
+   speed INTEGER,
+   max_health INTEGER,
+   curr_health INTEGER
 );
 CREATE TABLE characters_spells(
     character_id UUID REFERENCES characters(id),
