@@ -1,36 +1,20 @@
 <form id="prompt" class="prompt-form">
-    <textarea
-        class="prompt-text"
-        id="prompt"
-        name="prompt"
-        placeholder="Enter your character description here..."
-    ></textarea>
-    <div style="display: grid; gap: 30px">
-        <span>
-            <input
-                type="checkbox"
-                id="appearance"
-                name="appearance"
-                value="true"
-            />
-            <label for="appearance">Appearance</label>
-        </span>
-        <span>
-            <input type="checkbox" id="feats" name="feats" value="true" />
-            <label for="ability">Feats</label>
-        </span>
-        <span style="grid-column-start: 3">
-            <input type="checkbox" id="spells" name="spells" value="true" />
-            <label for="spells">Spells</label>
-        </span>
-    </div>
-    <input
-        class="submit-btn"
-        hx-indicator="#prompt"
-        hx-post="/character"
-        hx-target="#prompt"
-        hx-swap="outerHTML"
-        type="submit"
-        value="Submit"
-    />
+	<textarea class="prompt-text" id="prompt" name="prompt"
+		placeholder="Enter your character description here..."></textarea>
+	<div style="display: grid; gap: 30px">
+		<span>
+			<input type="checkbox" id="appearance" name="appearance" value="true" />
+			<label for="appearance">Appearance</label>
+		</span>
+		<span>
+			<input type="checkbox" id="feats" name="feats" value="true" />
+			<label for="ability">Feats</label>
+		</span>
+		<span style="grid-column-start: 3">
+			<input type="checkbox" id="spells" name="spells" value="true" />
+			<label for="spells">Spells</label>
+		</span>
+	</div>
+	<input class="submit-btn" hx-indicator="#prompt" hx-post="/character" hx-target="#prompt" hx-swap="outerHTML"
+		type="submit" value="Submit" />
 </form>

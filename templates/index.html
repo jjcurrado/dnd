@@ -3,77 +3,42 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <html>
-    <head>
-        <link rel="stylesheet" href="/static/main.css" />
-    </head>
-    <title>Dungeon Daddy</title>
 
-    <body>
-        <!--Navbar-->
-        <div>
-            <ul class="navbar">
-                <li>
-                    <img
-                        style="width: 25px; padding-right: 5px"
-                        src="static/icon.bmp"
-                    />
-                </li>
-                <li
-                    hx-get="/home"
-                    hx-target="#main-page"
-                    hx-swap="innerHTML"
-                    style="flex-grow: 2"
-                >
-                    <h2>Dungeon Daddy</h2>
-                </li>
-                <li
-                    hx-get="/prompt"
-                    hx-target="#main-page"
-                    hx-swap="innerhtml"
-                    style="flex-grow: 1"
-                >
-                    <h3>create characters</h3>
-                </li>
-                <li
-                    hx-get="/sheets"
-                    hx-target="#main-page"
-                    hx-swap="innerhtml"
-                    style="flex-grow: 1"
-                >
-                    <h3>view characters</h3>
-                </li>
-                <li
-                    style="flex-grow: 1"
-                    hx-get="/upload"
-                    hx-target="#main-page"
-                    hx-swap="innerhtml"
-                    style="flex-grow: 1"
-                >
-                    <h3>upload notes</h3>
-                </li>
-                <li
-                    style="flex-grow: 1"
-                    hx-get="/notes"
-                    hx-target="#main-page"
-                    hx-swap="innerhtml"
-                    style="flex-grow: 1"
-                >
-                    <h3>view sheet</h3>
-                </li>
-            </ul>
-        </div>
+<head>
+	<link rel="stylesheet" href="/static/main.css" />
+</head>
+<title>Dungeon Daddy</title>
 
-        <!--main body of the page-->
-        <div
-            hx-get="/home"
-            hx-target="#content"
-            hx-trigger="load"
-            hx-swap="outerHTML"
-            class="page"
-            id="main-page"
-        >
-            <div id="content"></div>
-        </div>
-        <!--end main page-->
-    </body>
+<body>
+	<!--Navbar-->
+	<div>
+		<ul class="navbar">
+			<li>
+				<img style="width: 25px; padding-right: 5px" src="static/icon.bmp" />
+			</li>
+			<li hx-get="/home" hx-target="#main-page" hx-swap="innerHTML" style="flex-grow: 2">
+				<h2>Dungeon Daddy</h2>
+			</li>
+			<li hx-get="/prompt" hx-target="#main-page" hx-swap="innerhtml" style="flex-grow: 1">
+				<h3>create characters</h3>
+			</li>
+			<li hx-get="/sheets" hx-target="#main-page" hx-swap="innerhtml" style="flex-grow: 1">
+				<h3>view characters</h3>
+			</li>
+			<li style="flex-grow: 1" hx-get="/upload" hx-target="#main-page" hx-swap="innerhtml" style="flex-grow: 1">
+				<h3>upload notes</h3>
+			</li>
+			<li style="flex-grow: 1" hx-get="/notes" hx-target="#main-page" hx-swap="innerhtml" style="flex-grow: 1">
+				<h3>view sheet</h3>
+			</li>
+		</ul>
+	</div>
+
+	<!--main body of the page-->
+	<div hx-get="/home" hx-target="#content" hx-trigger="load" hx-swap="outerHTML" class="page" id="main-page">
+		<div id="content"></div>
+	</div>
+	<!--end main page-->
+</body>
+
 </html>
