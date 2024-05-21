@@ -8,6 +8,9 @@ import (
 	"sync"
 )
 
+const spellListPrompt = "Create a list of %v spells and %v cantrips for a level %v %v . Only include spells that can be cast by a character of this level and class."
+const spellDetailsPrompt = "Give me the details for the spell %v"
+
 type DNDservice struct {
 	ai *AIservice
 	db *database.DB
@@ -32,7 +35,7 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (uti
 	// get a spell list
 	if char.Spellcaster && options.Spells {
 		spells, cantrips := util.PreparedSpells(char)
-		prompt := fmt.Sprintf("Create a list of %v spells and %v cantrips for a level %v %v . Only include spells that can be cast by a character of this level and class.", spells, cantrips, char.Level, char.Class)
+		prompt := fmt.Sprintf(spellListPrompt, spells, cantrips, char.Level, char.Class)
 		res := dnd.ai.sendRequest(prompt)
 		l := util.SpellList{}
 		err := dnd.ai.getAIResponse(res, &l)
@@ -52,7 +55,7 @@ func (dnd *DNDservice) CreateCharacter(prompt string, options util.Options) (uti
 				if err == nil && s.Name != "" {
 					details[index] = s
 				} else {
-					prompt := fmt.Sprintf("Give me the details for the spell %v", SpellName)
+					prompt := fmt.Sprintf(spellDetailsPrompt, SpellName)
 					slog.Info("creating spell", "name", SpellName)
 					res := dnd.ai.sendRequest(prompt)
 					s := util.Spell{}
