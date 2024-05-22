@@ -1,6 +1,7 @@
 package utilities
 
 type Character struct {
+	ID           int64
 	Name         string
 	Class        string
 	Subclass     string
@@ -31,6 +32,7 @@ type Options struct {
 }
 
 type Spell struct {
+	ID          int64
 	Name        string
 	Level       int
 	Duration    string
